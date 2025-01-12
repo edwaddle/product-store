@@ -51,8 +51,8 @@ export const updateProduct = async (req, res) => {
 export const deleteProduct = async(req, res) => {
     const {id} = req.params;
 
-    if (!product.name || !product.price || !product.image) {
-        return res.status(404).json({ success:false, message: "Please provide all fields" });
+    if (!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(404).json({success:false, message:"Invalid Product Id"});
     }
 
     try{
